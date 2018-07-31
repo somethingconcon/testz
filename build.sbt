@@ -159,12 +159,6 @@ lazy val runner = project.in(file("runner"))
   .settings(standardSettings ++ publishSettings: _*)
   .enablePlugins(AutomateHeaderPlugin)
 
-lazy val scalatest = project.in(file("scalatest"))
-  .dependsOn(core)
-  .settings(name := "testz-scalatest")
-  .settings(standardSettings ++ publishSettings: _*)
-  .enablePlugins(AutomateHeaderPlugin)
-
 lazy val scalaz = project.in(file("scalaz"))
   .dependsOn(core, suite)
   .settings(name := "testz-scalaz")
@@ -184,6 +178,17 @@ lazy val specs2 = project.in(file("specs2"))
   .settings(
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2-core" % "4.0.2"
+    )
+  )
+  .enablePlugins(AutomateHeaderPlugin)
+
+lazy val scalatest = project.in(file("scalatest"))
+  .dependsOn(core)
+  .settings(name := "testz-scalatest")
+  .settings(standardSettings ++ publishSettings: _*)
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "3.2.0-SNAP10"
     )
   )
   .enablePlugins(AutomateHeaderPlugin)
